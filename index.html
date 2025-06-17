@@ -395,7 +395,7 @@
         id="yt-video"
         width="640"
         height="360"
-        src="https://www.youtube.com/embed/2J01whddLeg?autoplay=1"
+        src="https://www.youtube.com/embed/2J01whddLeg?autoplay=1&mute=1"
         allow="autoplay; encrypted-media"
         allowfullscreen
         title="YouTube Live Stream"></iframe>
@@ -477,7 +477,7 @@
     function setVideoId(id) {
       if(!id) return;
       localStorage.setItem('ytLiveId', id);
-      ytVideo.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      ytVideo.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=1`;
       ytChat.src = `https://www.youtube.com/live_chat?v=${id}&embed_domain=bawongfai.github.io`;
     }
     // On page load, check for last used video id
