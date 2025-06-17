@@ -2,86 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>YouTube Live Stream Embed (bawongfai.github.io)</title>
+  <title>🟠 YouTube Live – Material Orange Theme</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;400;300&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-bg: #181c20;
-      --card-bg: #22262b;
-      --accent: #ff4343;
+      --primary: #ff9800;
+      --primary-dark: #ef6c00;
+      --primary-light: #fff3e0;
+      --surface: #23272e;
+      --surface-elev: #272b33;
+      --on-primary: #23272e;
+      --on-surface: #f7f7f7;
       --border-radius: 18px;
-      --shadow: 0 8px 32px rgba(0,0,0,0.28);
-      --gap: 32px;
+      --shadow: 0 2px 16px 0 rgba(0,0,0,0.20);
+      --shadow-hover: 0 8px 32px 0 rgba(255,152,0,0.20);
+      --card-padding: 1.5rem;
+      --transition: 0.22s cubic-bezier(.85,.03,.33,1.02);
+      --focus-outline: 2px solid #ff980099;
+      --chat-width: 360px;
+      --video-width: 640px;
+      --header-height: 68px;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(120deg, var(--surface) 0%, #181b20 100%);
+      font-family: 'Roboto', Arial, sans-serif;
+      color: var(--on-surface);
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: radial-gradient(circle at 30% 30%, #23272f 0%, #181c20 100%);
-      color: #fff;
-      margin: 0;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      background: linear-gradient(120deg, #22252b 0%, #181b20 100%);
+      transition: background 0.3s;
     }
     header {
-      margin-top: 44px;
-      margin-bottom: 16px;
-      text-align: center;
+      width: 100vw;
+      min-height: var(--header-height);
+      padding: 40px 0 16px 0;
+      box-sizing: border-box;
+      background: var(--surface-elev);
+      box-shadow: 0 1.5px 8px 0 #ff98001c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      position: relative;
     }
-    h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      letter-spacing: -1px;
-      margin: 0 0 10px 0;
+    .material-title {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -2px;
+      color: var(--primary);
+      margin: 0 0 8px 0;
+      text-shadow: 0 2px 14px #ff980033;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
     }
-    p {
-      color: #b0bac9;
-      margin: 0;
-      font-size: 1.1rem;
+    .subtitle {
+      font-size: 1.12rem;
+      color: #ffd180;
+      opacity: 0.82;
+      margin-bottom: 0;
+    }
+    .video-id-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 26px 0 0 0;
+      background: var(--surface-elev);
+      padding: 16px 22px;
+      border-radius: 14px;
+      box-shadow: 0 1.5px 8px #ff98001c;
+    }
+    .video-id-form label {
+      color: var(--primary);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-right: 4px;
+    }
+    .video-id-input {
+      background: #fff3e0;
+      color: #ef6c00;
+      border: 1.5px solid #ff980077;
+      border-radius: 8px;
+      font-size: 1rem;
+      padding: 7px 12px;
+      transition: border-color 0.14s;
+      outline: none;
+      font-family: 'Roboto', Arial, sans-serif;
+      min-width: 220px;
+      max-width: 320px;
+      box-sizing: border-box;
+    }
+    .video-id-input:focus {
+      border-color: #ff9800;
+    }
+    .video-id-form button {
+      background: var(--primary);
+      color: #fffbe6;
+      border: none;
+      border-radius: 7px;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 7px 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Roboto', Arial, sans-serif;
+      box-shadow: 0 1.5px 8px #ff980033;
+    }
+    .video-id-form button:hover {
+      background: var(--primary-dark);
     }
     .container {
       display: flex;
       flex-direction: row;
-      gap: var(--gap);
-      background: transparent;
-      padding: 32px 0;
+      gap: 36px;
+      background: none;
+      padding: 38px 0;
       justify-content: center;
+      z-index: 2;
+      position: relative;
     }
     .card {
-      background: var(--card-bg);
+      background: var(--surface-elev);
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform 0.18s;
+      min-width: 320px;
+      max-width: 100vw;
+      transition: box-shadow var(--transition), transform var(--transition);
+      border: 1.5px solid #ff98000d;
+      padding: var(--card-padding) 0 0 0;
+      backdrop-filter: blur(2px);
     }
-    .card:hover {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 0 14px 40px rgba(255,67,67,0.18);
+    .card:hover, .card:focus-within {
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary);
+      transform: translateY(-2px) scale(1.018);
+      outline: var(--focus-outline);
     }
     .card label {
-      padding: 10px 0 0 0;
+      padding: 0 0 10px 0;
       font-size: 1.08rem;
-      color: #ff4343;
-      font-weight: 600;
+      color: var(--primary-light);
+      font-weight: 500;
       letter-spacing: 0.5px;
       text-align: center;
+      background: none;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 10px #ff980033;
+      user-select: none;
     }
     .video iframe, .chat iframe {
       display: block;
       border: none;
       border-radius: 0 0 var(--border-radius) var(--border-radius);
       width: 100%;
+      background: #181b20;
+      box-shadow: 0 2px 12px 0 #1114;
     }
     .video {
-      width: 560px;
-      height: 315px;
+      width: var(--video-width);
+      max-width: 97vw;
+      height: 360px;
+      margin-bottom: 8px;
     }
     .chat {
-      width: 350px;
+      width: var(--chat-width);
+      max-width: 97vw;
       height: 500px;
+    }
+    .github-badge {
+      display: inline-block;
+      margin: 24px 0 36px 0;
+      padding: 10px 28px;
+      background: var(--primary);
+      border-radius: 1.6rem;
+      box-shadow: 0 2px 8px 0 #ff980055;
+      color: var(--on-primary);
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      transition: background 0.25s, color 0.21s, box-shadow 0.21s;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Roboto', Arial, sans-serif;
+    }
+    .github-badge:hover, .github-badge:focus {
+      background: var(--primary-dark);
+      color: #fff3e0;
+      box-shadow: 0 4px 18px 0 #ff980088;
     }
     @media (max-width: 1050px) {
       .container {
@@ -90,20 +216,20 @@
         gap: 36px;
       }
       .video, .chat {
-        width: 98vw;
+        width: 95vw;
         min-width: 0;
       }
       .video {
         min-width: 0;
-        max-width: 98vw;
+        max-width: 97vw;
         height: 56vw;
         max-height: 60vh;
       }
       .chat {
         min-width: 0;
-        max-width: 98vw;
+        max-width: 97vw;
         height: 65vw;
-        max-height: 60vh;
+        max-height: 65vh;
       }
     }
     @media (max-width: 700px) {
@@ -111,42 +237,273 @@
         width: 100vw;
         max-width: 100vw;
       }
+      .card {
+        min-width: 0;
+        border-radius: 1.1rem;
+        padding: 1rem 0 0 0;
+      }
     }
-    /* Nice scrollbar for chat */
     ::-webkit-scrollbar {
-      width: 9px;
-      background: #1e2328;
+      width: 10px;
+      background: #23272e;
     }
     ::-webkit-scrollbar-thumb {
-      background: #34394a;
-      border-radius: 9px;
+      background: #ff980066;
+      border-radius: 18px;
+      border: 2px solid #23272e;
+    }
+    body, .card, .video iframe, .chat iframe {
+      filter: brightness(0.99) sepia(0.07) hue-rotate(-7deg) saturate(1.04);
+    }
+    .theme-switch {
+      position: absolute;
+      top: 18px;
+      right: 38px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .switch-label {
+      font-size: 1rem;
+      color: #ff9800;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      opacity: 0.8;
+      user-select: none;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 26px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #444a52;
+      transition: .3s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #fff3e0;
+      transition: .3s;
+      border-radius: 50%;
+      border: 2.5px solid #ffa726;
+      box-sizing: border-box;
+    }
+    input:checked + .slider {
+      background-color: #ffd180;
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+      background-color: #ff9800;
+      border: 2.5px solid #fff3e0;
+    }
+    body.light {
+      background: linear-gradient(120deg, #fff3e0 0%, #ffe0b2 100%);
+      color: #372600;
+    }
+    body.light header {
+      background: #fffbe6;
+      box-shadow: 0 1.5px 8px 0 #ff98001c;
+    }
+    body.light .material-title {
+      color: #ef6c00;
+      text-shadow: 0 2px 18px #fff3e0;
+    }
+    body.light .subtitle {
+      color: #ff9800;
+    }
+    body.light .card {
+      background: #fff8f2;
+      border: 1.5px solid #ffd180;
+      box-shadow: 0 2px 16px 0 #ff980022;
+    }
+    body.light .card label {
+      color: #ff9800;
+      background: none;
+      text-shadow: 0 2px 10px #ff980033;
+    }
+    body.light .github-badge {
+      background: #ef6c00;
+      color: #fffbe6;
+    }
+    body.light .github-badge:hover, body.light .github-badge:focus {
+      background: #ff9800;
+      color: #fffbe6;
+    }
+    body.light .video iframe, body.light .chat iframe {
+      background: #fffbe6;
+      box-shadow: 0 2px 12px 0 #ffa72633;
+    }
+    body.light, body.light .card, body.light .video iframe, body.light .chat iframe {
+      filter: brightness(1.005) sepia(0.03) hue-rotate(-3deg) saturate(1.04);
+    }
+    @media (max-width: 500px) {
+      .theme-switch {
+        right: 10px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>🎥 YouTube Live Stream</h1>
-    <p>Watch and chat live! (Hosted on <strong>bawongfai.github.io</strong>)</p>
+    <div class="theme-switch" aria-label="Toggle dark/light theme">
+      <span class="switch-label">Dark</span>
+      <label class="switch">
+        <input type="checkbox" id="theme-toggle" aria-label="Toggle theme">
+        <span class="slider"></span>
+      </label>
+      <span class="switch-label">Light</span>
+    </div>
+    <div class="material-title">
+      <svg width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#ff9800"/><circle cx="16" cy="16" r="8" fill="#fff3e0" opacity="0.25"/></svg>
+      YouTube Live – Orange Material
+    </div>
+    <div class="subtitle">
+      Comfortable streaming & chat, hosted on <strong>bawongfai.github.io</strong>
+    </div>
+    <form class="video-id-form" id="video-id-form" autocomplete="off">
+      <label for="video-id-input">Live Video ID or Link:</label>
+      <input
+        class="video-id-input"
+        id="video-id-input"
+        type="text"
+        placeholder="e.g. 2J01whddLeg or https://..."
+        maxlength="120"
+        required
+      >
+      <button type="submit">Change</button>
+    </form>
   </header>
   <div class="container">
-    <div class="card video">
-      <label>Live Stream</label>
+    <div class="card video" tabindex="0">
+      <label>🎬 Live Stream</label>
       <iframe
-        width="560"
-        height="315"
+        id="yt-video"
+        width="640"
+        height="360"
         src="https://www.youtube.com/embed/2J01whddLeg?autoplay=1"
         allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
+        allowfullscreen
+        title="YouTube Live Stream"></iframe>
     </div>
-    <div class="card chat">
-      <label>Live Chat</label>
+    <div class="card chat" tabindex="0">
+      <label>💬 Live Chat</label>
       <iframe
-        width="350"
+        id="yt-chat"
+        width="360"
         height="500"
-        src="https://www.youtube.com/live_chat?v=2J01whddLeg&embed_domain=bawongfai.github.io">
-      </iframe>
+        src="https://www.youtube.com/live_chat?v=2J01whddLeg&embed_domain=bawongfai.github.io"
+        title="YouTube Live Chat"></iframe>
     </div>
   </div>
+  <a class="github-badge" href="https://github.com/bawongfai/bawongfai.github.io" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="21" height="21" style="vertical-align:-5px; margin-right:7px;">
+      <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.113.793-.258.793-.577 0-.285-.011-1.04-.016-2.04-3.338.724-4.042-1.612-4.042-1.612-.546-1.387-1.334-1.757-1.334-1.757-1.09-.746.082-.73.082-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.305-5.467-1.335-5.467-5.931 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.527.117-3.182 0 0 1.008-.323 3.3 1.23.957-.266 1.984-.399 3.003-.404 1.018.005 2.047.138 3.006.404 2.289-1.553 3.295-1.23 3.295-1.23.653 1.655.242 2.879.119 3.182.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.371.823 1.102.823 2.222 0 1.604-.015 2.898-.015 3.292 0 .322.19.694.8.576C20.565 21.796 24 17.299 24 12c0-6.627-5.373-12-12-12z"/>
+    </svg>
+    View Source on GitHub
+  </a>
+  <script>
+    // Theme toggle logic with localStorage
+    const body = document.body;
+    const toggle = document.getElementById('theme-toggle');
+    function setTheme(isLight) {
+      if (isLight) {
+        body.classList.add('light');
+        toggle.checked = true;
+      } else {
+        body.classList.remove('light');
+        toggle.checked = false;
+      }
+    }
+    const themePref = localStorage.getItem('theme');
+    if(themePref === "light") setTheme(true);
+    else setTheme(false);
+    toggle.addEventListener('change', function() {
+      if(this.checked) {
+        setTheme(true);
+        localStorage.setItem('theme', 'light');
+      } else {
+        setTheme(false);
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Extremely robust Video ID extractor: handles all YouTube link forms, query params, timestamps, etc.
+    function extractVideoId(str) {
+      if (!str) return null;
+      str = str.trim();
+      // If just an ID
+      if (/^[A-Za-z0-9_-]{8,}$/.test(str)) return str;
+      // Try to extract from all common forms (including URLs with extra params, timestamps, etc.)
+      // This will extract the first valid ID it finds
+      // Try all known YouTube video URL patterns
+      const regexes = [
+        /[?&]v=([A-Za-z0-9_-]{8,})/,                  // watch?v=ID
+        /youtube\.com\/live\/([A-Za-z0-9_-]{8,})/,     // /live/ID
+        /youtube\.com\/embed\/([A-Za-z0-9_-]{8,})/,    // /embed/ID
+        /youtube\.com\/shorts\/([A-Za-z0-9_-]{8,})/,   // /shorts/ID
+        /youtu\.be\/([A-Za-z0-9_-]{8,})/,              // youtu.be/ID
+        /\/([A-Za-z0-9_-]{8,})(?:[?&#/]|$)/            // fallback: last path section
+      ];
+      for (const r of regexes) {
+        const m = str.match(r);
+        if (m) return m[1];
+      }
+      // fallback: just first 11-char id in the string
+      const fallback = str.match(/([A-Za-z0-9_-]{11})/);
+      if (fallback) return fallback[1];
+      return null;
+    }
+
+    // Video ID change logic
+    const form = document.getElementById('video-id-form');
+    const input = document.getElementById('video-id-input');
+    const ytVideo = document.getElementById('yt-video');
+    const ytChat = document.getElementById('yt-chat');
+    function setVideoId(id) {
+      if(!id) return;
+      localStorage.setItem('ytLiveId', id);
+      ytVideo.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      ytChat.src = `https://www.youtube.com/live_chat?v=${id}&embed_domain=bawongfai.github.io`;
+    }
+    // On page load, check for last used video id
+    const defaultVideoId = '2J01whddLeg';
+    const lastVideoId = localStorage.getItem('ytLiveId');
+    if (lastVideoId && lastVideoId !== defaultVideoId) {
+      input.value = lastVideoId;
+      setVideoId(lastVideoId);
+    } else {
+      // Always set default video
+      input.value = defaultVideoId;
+      setVideoId(defaultVideoId);
+    }
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const val = input.value.trim();
+      const id = extractVideoId(val);
+      if (id) {
+        setVideoId(id);
+        input.style.borderColor = "#4caf50";
+        setTimeout(()=>{ input.style.borderColor = "#ff980077"; }, 800);
+      } else {
+        input.style.borderColor = "#f44336";
+        setTimeout(()=>{ input.style.borderColor = "#ff980077"; }, 1300);
+      }
+    });
+  </script>
 </body>
 </html>
